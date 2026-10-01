@@ -22,7 +22,6 @@ SISTEMA DE REGISTRO DE CALIFICACIONES
         opcion = 0
 
     match opcion:
-
         case 1:
             nombre = ""
             while nombre == "":
@@ -31,13 +30,13 @@ SISTEMA DE REGISTRO DE CALIFICACIONES
                     print("ERROR: El nombre no puede estar vacio.")
 
             notas = []
-            for i in range(1, 3 + 1):
+            for i in range(1, 3 + 1, 1):
                 mensaje = f"Ingrese la calificacion {i}:  "
                 valida = False
-    
+
                 while not valida:
                     texto = input(mensaje).strip()
-    
+
                     if texto.isdecimal():
                         nota = int(texto)
                         if nota <= 100:
@@ -52,25 +51,25 @@ SISTEMA DE REGISTRO DE CALIFICACIONES
                     else:
                         print("ERROR: Debe ingresar un numero entero (no texto ni vacio).")
                         mensaje = "Ingrese nuevamente la calificacion:  "
-    
             promedio = sum(notas) / len(notas)
-    
+
             if promedio >= 51:
                 estado = "APROBADO"
             else:
                 estado = "REPROBADO"
-    
+
             nombres.append(nombre)
             notas_estudiantes.append(notas)
             promedios.append(promedio)
             estados.append(estado)
-    
-            print("Resultado")
+
+            print("RESULTADO")
             print(f"Estudiante: {nombre}")
             for i in range(len(notas)):
                 print(f"Nota {i+1}: {notas[i]}")
-                print(f"Promedio: {promedio:.2f}")
-                print(f"Estado: {estado}")    
+            print(f"Promedio: {promedio:.2f}")
+            print(f"Estado: {estado}")
+
         case 2:
             if len(nombres) == 0:
                 print("Aun no se ha registrado ningun estudiante.")
@@ -106,3 +105,9 @@ SISTEMA DE REGISTRO DE CALIFICACIONES
                         break
                 else:
                     print(f"{buscado} no se encuentra en el sistema")
+
+        case 4:
+            print("Saliendo del sistema...")
+
+        case _:
+            print("ERROR: Opcion no valida. Elija un numero del 1 al 4.")
