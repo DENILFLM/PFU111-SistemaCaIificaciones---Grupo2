@@ -53,22 +53,56 @@ SISTEMA DE REGISTRO DE CALIFICACIONES
                         print("ERROR: Debe ingresar un numero entero (no texto ni vacio).")
                         mensaje = "Ingrese nuevamente la calificacion:  "
     
-                promedio = sum(notas) / len(notas)
+            promedio = sum(notas) / len(notas)
     
-                if promedio >= 51:
-                    estado = "APROBADO"
-                else:
-                    estado = "REPROBADO"
+            if promedio >= 51:
+                estado = "APROBADO"
+            else:
+                estado = "REPROBADO"
     
-                nombres.append(nombre)
-                notas_estudiantes.append(notas)
-                promedios.append(promedio)
-                estados.append(estado)
+            nombres.append(nombre)
+            notas_estudiantes.append(notas)
+            promedios.append(promedio)
+            estados.append(estado)
     
-                print("\n--- RESULTADO ---")
-                print(f"Estudiante: {nombre}")
-                for i in range(len(notas)):
-                    print(f"Nota {i+1}: {notas[i]}")
+            print("Resultado")
+            print(f"Estudiante: {nombre}")
+            for i in range(len(notas)):
+                print(f"Nota {i+1}: {notas[i]}")
                 print(f"Promedio: {promedio:.2f}")
-                print(f"Estado: {estado}")
-                print("-----------------")        
+                print(f"Estado: {estado}")    
+        case 2:
+            if len(nombres) == 0:
+                print("Aun no se ha registrado ningun estudiante.")
+            else:
+                aprobados = 0
+                reprobados = 0
+
+                print("RESULTADOS")
+                for i in range(len(nombres)):
+                    print(f"{i+1}. {nombres[i]} | Notas: {notas_estudiantes[i]} | Promedio: {promedios[i]:.2f} | {estados[i]}")
+
+                    if estados[i] == "APROBADO":
+                        aprobados += 1
+                    else:
+                        reprobados += 1
+
+                print(f"Total de estudiantes: {len(nombres)}")
+                print(f"Aprobados: {aprobados}")
+                print(f"Reprobados: {reprobados}")
+
+        case 3:
+            if len(nombres) == 0:
+                print("Aun no se ha registrado ningun estudiante.")
+            else:
+                buscado = input("Ingrese el nombre que esta buscando:  ").strip()
+
+                for i in range(len(nombres)):
+                    if nombres[i].lower() == buscado.lower():
+                        print(f"{nombres[i]} se encontro")
+                        print(f"Notas: {notas_estudiantes[i]}")
+                        print(f"Promedio: {promedios[i]:.2f}")
+                        print(f"Estado: {estados[i]}")
+                        break
+                else:
+                    print(f"{buscado} no se encuentra en el sistema")
