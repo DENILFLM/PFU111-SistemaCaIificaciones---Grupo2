@@ -1,22 +1,22 @@
+nombres = []
+notas_estudiantes = []
+promedios = []
+estados = []
 
-NOTA_MINIMA = 0
-NOTA_MAXIMA = 100
-NOTA_APROBACION = 51
-CANTIDAD_NOTAS = 3
+opcion = 0
+while opcion != 4:
+    print("""
+SISTEMA DE REGISTRO DE CALIFICACIONES
 
-estudiantes = []
+1.Registrar estudiante
+2.Mostrar resultados
+3.Buscar estudiante
+4.Salir del Sistema
 
-print("SISTEMA DE REGISTRO DE CALIFICACIONES")
+""")
+    texto_opcion = input("Elija una opcion:  ").strip()
 
-while continuar:
- 
-    nombre = ""
-    while nombre == "":
-        nombre = input("Ingrese el nombre del estudiante: ").strip()
-        if nombre == "":
-            print("ERROR: El nombre no puede estar vacío.")
- 
-    notas = []
-    for i in range(1, CANTIDAD_NOTAS + 1):
-        mensaje = f"Ingrese la calificación {i}: "
-        valida = False
+    if texto_opcion.isdecimal():
+        opcion = int(texto_opcion)
+    else:
+        opcion = 0
